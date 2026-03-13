@@ -163,8 +163,6 @@
             }
         }
         
-        
-        
         /* Values Section */
         .values {
             padding: 5rem 0;
@@ -604,6 +602,10 @@
             align-items: center;
         }
         
+        .about-text {
+            text-align: left;
+        }
+        
         .about-text h2 {
             font-size: 2.5rem;
             color: var(--secondary);
@@ -721,6 +723,33 @@
             
             .timeline-content::after {
                 left: -40px !important;
+            }
+        }
+        
+        /* Hide image on mobile and tablet and center text */
+        @media (max-width: 1024px) {
+            .hide-on-mobile {
+                display: none;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .about-text {
+                text-align: center;
+                max-width: 800px;
+                margin: 0 auto;
+            }
+            
+            .about-text p {
+                text-align: justify;
+                text-justify: inter-word;
+            }
+            
+            .about-text h2 {
+                text-align: center;
             }
         }
         
@@ -892,7 +921,7 @@
                     <p>Aujourd'hui, Bionik Ayiti aspire à toucher de plus en plus d'enfants, à former des ingénieurs haïtiens dans le domaine de la robotique et de la biomécanique, et à inspirer tout un pays. Mon fils, source quotidienne d'inspiration, me rappelle chaque jour pourquoi nous avons commencé ce projet : transformer une épreuve personnelle en une opportunité pour toute une communauté. Bionik Ayiti, c'est l'histoire d'un amour maternel transformé en innovation, d'un rêve personnel devenu moteur de changement pour Haïti.</p>
                     <p><strong>Si le monde ne vous offre pas ce dont vous avez besoin, nous avons appris à le construire pour vous.</strong></p>
                 </div>
-                <div class="about-image">
+                <div class="about-image hide-on-mobile">
                     <img src="membres.jpg" alt="Équipe Bionik Ayiti">
                 </div>
             </div>
@@ -1084,8 +1113,8 @@
                     <h3>Contactez-Nous</h3>
                     <ul>
                         <li><i class="fas fa-map-marker-alt"></i> Port-au-Prince, Haïti</li>
-                        <li><i class="fas fa-phone"></i> +509 1234 5678</li>
-                        <li><i class="fas fa-envelope"></i> info@bionikayiti.com</li>
+                        <li><i class="fas fa-phone"></i>+509 34013628</li>
+                        <li><i class="fas fa-envelope"></i> bionikayiti@gmail.com</li>
                     </ul>
                 </div>
             </div>
