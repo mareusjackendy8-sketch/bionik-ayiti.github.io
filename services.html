@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Bionik Ayiti</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #f59af4;
+            --secondary: #1f0d68;
+            --dark: #03032e;
+            --light: #f8f9fa;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--dark), var(--secondary));
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-out;
+        }
+        
+        .header-hidden {
+            transform: translateY(-100%);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo i {
+            color: var(--primary);
+            font-size: 2rem;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .logo span {
+            color: var(--primary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        nav a:hover {
+            color: var(--primary);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: white;
+        }
+        
+        /* Hero Section */
+        .services-hero {
+            background: linear-gradient(rgba(3, 3, 46, 0.85), rgba(31, 13, 104, 0.85)), url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 8rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .services-hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .services-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease-out 0.5s forwards;
+        }
+        
+        .services-hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease-out 0.8s forwards;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Services Overview */
+        .services-overview {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .overview-content {
+            display: flex;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .overview-text h3 {
+            font-size: 1.8rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .overview-text p {
+            margin-bottom: 1.5rem;
+            color: #666;
+            line-height: 1.8;
+        }
+        
+        .overview-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(245, 154, 244, 0.1);
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-5px);
+            background: rgba(245, 154, 244, 0.2);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: var(--secondary);
+            font-weight: 500;
+        }
+        
+        .overview-visual {
+            position: relative;
+            height: 400px;
+            background: linear-gradient(135deg, var(--secondary), var(--dark));
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .service-animation {
+            width: 300px;
+            height: 300px;
+            position: relative;
+        }
+        
+        .animation-circle {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+            animation: rotate 20s linear infinite;
+        }
+        
+        .circle-1 {
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            animation-delay: 0s;
+        }
+        
+        .circle-2 {
+            width: 70%;
+            height: 70%;
+            top: 15%;
+            left: 15%;
+            animation-delay: -5s;
+            animation-direction: reverse;
+        }
+        
+        .circle-3 {
+            width: 40%;
+            height: 40%;
+            top: 30%;
+            left: 30%;
+            animation-delay: -10s;
+        }
+        
+        .animation-icon {
+            position: absolute;
+            font-size: 2rem;
+            color: var(--primary);
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .icon-1 { top: 10%; left: 50%; transform: translateX(-50%); animation-delay: 0s; }
+        .icon-2 { top: 50%; right: 10%; transform: translateY(-50%); animation-delay: 1s; }
+        .icon-3 { bottom: 10%; left: 50%; transform: translateX(-50%); animation-delay: 2s; }
+        .icon-4 { top: 50%; left: 10%; transform: translateY(-50%); animation-delay: 3s; }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        /* Main Services Section */
+        .main-services {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--dark), var(--secondary));
+            color: white;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 2.5rem;
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), transparent);
+            opacity: 0;
+            transition: var(--transition);
+            z-index: -1;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .service-card:hover::before {
+            opacity: 0.1;
+        }
+        
+        .service-icon {
+            font-size: 3.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            transition: var(--transition);
+        }
+        
+        .service-card:hover .service-icon {
+            transform: scale(1.2) rotate(5deg);
+        }
+        
+        .service-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .service-card p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-features {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+        
+        .service-features li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .service-features i {
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+        
+        /* Process Section */
+        .service-process {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        
+        .process-timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 4px;
+            background: var(--primary);
+            transform: translateX(-50%);
+        }
+        
+        .process-step {
+            margin-bottom: 3rem;
+            position: relative;
+            width: 50%;
+            padding: 0 2rem;
+        }
+        
+        .process-step:nth-child(odd) {
+            left: 0;
+        }
+        
+        .process-step:nth-child(even) {
+            left: 50%;
+        }
+        
+        .process-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            transition: var(--transition);
+        }
+        
+        .process-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .process-content::after {
+            content: '';
+            position: absolute;
+            top: 30px;
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+        
+        .process-step:nth-child(odd) .process-content::after {
+            right: -40px;
+        }
+        
+        .process-step:nth-child(even) .process-content::after {
+            left: -40px;
+        }
+        
+        .process-number {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        .process-content h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+        
+        .process-content p {
+            color: #666;
+        }
+        
+        /* Specialized Services */
+        .specialized-services {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--dark), var(--secondary));
+            color: white;
+        }
+        
+        .specialized-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .specialized-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+        
+        .specialized-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .specialized-header {
+            padding: 2rem;
+            text-align: center;
+            background: rgba(245, 154, 244, 0.2);
+        }
+        
+        .specialized-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .specialized-header h3 {
+            font-size: 1.5rem;
+        }
+        
+        .specialized-body {
+            padding: 2rem;
+        }
+        
+        .specialized-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+        
+        .specialized-features li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .specialized-features i {
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+        
+        /* CTA Section */
+        .cta {
+            padding: 5rem 0;
+            background: linear-gradient(rgba(3, 3, 46, 0.9), rgba(31, 13, 104, 0.9)), url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .cta p {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--dark);
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: var(--primary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Mobile Navigation */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 300px;
+            height: 100vh;
+            background: linear-gradient(135deg, var(--dark), var(--secondary));
+            z-index: 1100;
+            transition: right 0.4s ease;
+            padding: 2rem;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .mobile-nav.active {
+            right: 0;
+        }
+        
+        .mobile-nav ul {
+            list-style: none;
+            margin-top: 3rem;
+        }
+        
+        .mobile-nav li {
+            margin-bottom: 1.5rem;
+        }
+        
+        .mobile-nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            display: block;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .close-menu {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            color: white;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1099;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+        
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .services-hero h1 {
+                font-size: 3rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .overview-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .process-timeline::before {
+                left: 30px;
+            }
+            
+            .process-step {
+                width: 100%;
+                left: 0 !important;
+                padding-left: 70px;
+                padding-right: 20px;
+            }
+            
+            .process-content::after {
+                left: -40px !important;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: row;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .services-hero {
+                padding: 6rem 0;
+            }
+            
+            .services-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .services-hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .services-grid,
+            .specialized-grid,
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .service-card,
+            .specialized-card {
+                margin-bottom: 1.5rem;
+            }
+            
+            .overview-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta h2 {
+                font-size: 2rem;
+            }
+            
+            .footer-column {
+                margin-bottom: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                width: 95%;
+            }
+            
+            .logo h1 {
+                font-size: 1.5rem;
+            }
+            
+            .logo i {
+                font-size: 1.5rem;
+            }
+            
+            .services-hero {
+                padding: 4rem 0;
+            }
+            
+            .services-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .services-hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .services-overview,
+            .main-services,
+            .service-process,
+            .specialized-services,
+            .cta {
+                padding: 3rem 0;
+            }
+            
+            .service-card,
+            .specialized-card {
+                padding: 1.5rem;
+            }
+            
+            .btn {
+                padding: 0.7rem 1.2rem;
+                font-size: 0.9rem;
+            }
+            
+            footer {
+                padding: 2rem 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-robot"></i>
+                    <h1>Bionik <span>Ayiti</span></h1>
+                </div>
+                <nav>
+                    <ul>
+                       <li><a href="index.html">Accueil</a></li>
+                        <li><a href="about.html">À propos</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="faq.html" class="active">FAQ</a></li>
+                    </ul>
+                </nav>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <button class="close-menu" id="closeMenu">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul>
+                       <li><a href="index.html">Accueil</a></li>
+                        <li><a href="about.html">À propos</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="faq.html" class="active">FAQ</a></li>
+        </ul>
+    </div>
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Hero Section -->
+    <section class="services-hero">
+        <div class="container">
+            <div class="services-hero-content">
+                <h1>Nos Services</h1>
+                <p>Des solutions complètes et personnalisées pour redonner mobilité et autonomie</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Overview -->
+    <section class="services-overview">
+        <div class="container">
+            <div class="section-title">
+                <h2>Services Complets</h2>
+                <p>Chez Bionik Ayiti, nous croyons que la technologie doit être au service de tous</p>
+            </div>
+            <div class="overview-content">
+                <div class="overview-text">
+                    <h3>Une Approche Intégrée</h3>
+                    <p>Nous mettons notre expertise en robotique, modélisation 3D, électronique et optimisation fonctionnelle au cœur de chaque solution bionique que nous concevons. Notre équipe travaille chaque jour pour offrir aux enfants et aux adultes amputés des dispositifs fiables, modernes, légers et parfaitement adaptés à leur réalité physique et sociale.</p>
+                    <p>Nos services couvrent l'ensemble du processus, depuis l'analyse initiale du besoin jusqu'à la livraison finale de la prothèse. Nous offrons également des services complémentaires tels que la maintenance, la formation des utilisateurs, et la collaboration avec des établissements médicaux et scolaires.</p>
+                    
+                   
+                <div class="overview-visual">
+                    <div class="service-animation">
+                        <div class="animation-circle circle-1"></div>
+                        <div class="animation-circle circle-2"></div>
+                        <div class="animation-circle circle-3"></div>
+                        <div class="animation-icon icon-1">
+                            <i class="fas fa-cube"></i>
+                        </div>
+                        <div class="animation-icon icon-2">
+                            <i class="fas fa-microchip"></i>
+                        </div>
+                        <div class="animation-icon icon-3">
+                            <i class="fas fa-hand-holding-medical"></i>
+                        </div>
+                        <div class="animation-icon icon-4">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Services Section -->
+    <section class="main-services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nos Services Principaux</h2>
+                <p>Des solutions complètes adaptées à chaque besoin spécifique</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-user-cog"></i>
+                    </div>
+                    <h3>Conception de Prothèses Personnalisées</h3>
+                    <p>Chaque prothèse est pensée en fonction de l'anatomie et des besoins de la personne. Nous tenons compte de l'âge, de la morphologie, du niveau d'amputation et du type d'activités quotidiennes.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Évaluation personnalisée</li>
+                        <li><i class="fas fa-check"></i> Design ergonomique</li>
+                        <li><i class="fas fa-check"></i> Adaptation aux activités</li>
+                        <li><i class="fas fa-check"></i> Suivi personnalisé</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <h3>Modélisation & Impression 3D</h3>
+                    <p>Pièces légères, durables et esthétiques. Nous utilisons des matériaux adaptés aux contraintes mécaniques des mouvements et optimisés pour le climat haïtien.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Scan 3D de précision</li>
+                        <li><i class="fas fa-check"></i> Matériaux résistants</li>
+                        <li><i class="fas fa-check"></i> Design optimisé</li>
+                        <li><i class="fas fa-check"></i> Finition esthétique</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h3>Électronique & Programmation</h3>
+                    <p>Capteurs EMG et microcontrôleurs optimisés. Le système embarqué est conçu pour offrir des mouvements fluides et contrôlés avec une consommation énergétique minimale.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Capteurs EMG haute précision</li>
+                        <li><i class="fas fa-check"></i> Algorithmes intelligents</li>
+                        <li><i class="fas fa-check"></i> Interface intuitive</li>
+                        <li><i class="fas fa-check"></i> Mises à jour logicielles</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="service-process">
+        <div class="container">
+            <div class="section-title">
+                <h2>Notre Processus de Service</h2>
+                <p>Un accompagnement complet de la première consultation au suivi à long terme</p>
+            </div>
+            <div class="process-timeline">
+                <div class="process-step">
+                    <div class="process-content">
+                        <div class="process-number">1</div>
+                        <h3>Consultation Initiale</h3>
+                        <p>Évaluation détaillée des besoins, examen des capacités musculaires résiduelles et définition des objectifs fonctionnels avec le bénéficiaire.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="process-content">
+                        <div class="process-number">2</div>
+                        <h3>Conception Personnalisée</h3>
+                        <p>Modélisation 3D sur mesure, sélection des composants et planification de la fabrication adaptée au profil unique de chaque utilisateur.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="process-content">
+                        <div class="process-number">3</div>
+                        <h3>Fabrication & Assemblage</h3>
+                        <p>Production des pièces par impression 3D, intégration des composants électroniques et programmation des algorithmes de contrôle.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="process-content">
+                        <div class="process-number">4</div>
+                        <h3>Tests & Ajustements</h3>
+                        <p>Validation en conditions réelles, ajustements ergonomiques et formation de l'utilisateur pour une prise en main optimale.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="process-content">
+                        <div class="process-number">5</div>
+                        <h3>Suivi & Maintenance</h3>
+                        <p>Accompagnement continu, maintenance préventive et adaptations nécessaires pour garantir performance et confort à long terme.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specialized Services -->
+    <section class="specialized-services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Services Spécialisés</h2>
+                <p>Des solutions adaptées à des besoins spécifiques</p>
+            </div>
+            <div class="specialized-grid">
+                <div class="specialized-card">
+                    <div class="specialized-header">
+                        <div class="specialized-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h3>Tests & Validation</h3>
+                    </div>
+                    <div class="specialized-body">
+                        <p>Avant la remise, chaque dispositif est testé en conditions réelles pour garantir performance et sécurité.</p>
+                        <ul class="specialized-features">
+                            <li><i class="fas fa-check"></i> Tests de résistance</li>
+                            <li><i class="fas fa-check"></i> Validation ergonomique</li>
+                            <li><i class="fas fa-check"></i> Contrôle qualité</li>
+                            <li><i class="fas fa-check"></i> Certification sécurité</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="specialized-card">
+                    <div class="specialized-header">
+                        <div class="specialized-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3>Maintenance & Réparation</h3>
+                    </div>
+                    <div class="specialized-body">
+                        <p>Nous assurons un suivi continu avec maintenance préventive et réparations rapides.</p>
+                        <ul class="specialized-features">
+                            <li><i class="fas fa-check"></i> Maintenance préventive</li>
+                            <li><i class="fas fa-check"></i> Réparations urgentes</li>
+                            <li><i class="fas fa-check"></i> Mises à jour logicielles</li>
+                            <li><i class="fas fa-check"></i> Pièces de rechange</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="specialized-card">
+                    <div class="specialized-header">
+                        <div class="specialized-icon">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </div>
+                        <h3>Ateliers & Formations</h3>
+                    </div>
+                    <div class="specialized-body">
+                        <p>Nous organisons des ateliers pour former techniciens, parents et inspirer les jeunes.</p>
+                        <ul class="specialized-features">
+                            <li><i class="fas fa-check"></i> Formation utilisateurs</li>
+                            <li><i class="fas fa-check"></i> Ateliers techniques</li>
+                            <li><i class="fas fa-check"></i> Sensibilisation écoles</li>
+                            <li><i class="fas fa-check"></i> Mentorat jeunes</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Bionik Ayiti</h3>
+                    <p>Faire progresser les soins de santé grâce à des solutions technologiques prothétiques innovantes en Haïti.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Liens Rapides</h3>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="about.html">À propos</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="technology.html">Technologie</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Solutions Prothétiques</h3>
+                    <ul>
+                        <li><a href="#">Bras Bioniques</a></li>
+                        <li><a href="#">Jambes Intelligentes</a></li>
+                        <li><a href="#">Mains Myoélectriques</a></li>
+                        <li><a href="#">Prothèses Pédiatriques</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contactez-Nous</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Port-au-Prince, Haïti</li>
+                        <li><i class="fas fa-phone"></i> +509 1234 5678</li>
+                        <li><i class="fas fa-envelope"></i> info@bionikayiti.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Bionik Ayiti. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu');
+        const mobileNav = document.getElementById('mobileNav');
+        const closeMenuBtn = document.getElementById('closeMenu');
+        const overlay = document.getElementById('overlay');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            mobileNav.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        closeMenuBtn.addEventListener('click', function() {
+            mobileNav.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        
+        overlay.addEventListener('click', function() {
+            mobileNav.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Close mobile menu when clicking on a link
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mobileNav.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+
+        // Header scroll effect
+        let lastScrollY = window.scrollY;
+        const header = document.getElementById('header');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > lastScrollY && window.scrollY > 100) {
+                header.classList.add('header-hidden');
+            } else {
+                header.classList.remove('header-hidden');
+            }
+            lastScrollY = window.scrollY;
+        });
+
+        // Fade in elements on scroll
+        const fadeElements = document.querySelectorAll('.overview-content, .service-card, .process-content, .specialized-card');
+        
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.style.opacity = "1";
+                    element.style.transform = "translateY(0)";
+                }
+            });
+        };
+
+        // Set initial state for fade elements
+        fadeElements.forEach(element => {
+            element.style.opacity = "0";
+            element.style.transform = "translateY(30px)";
+            element.style.transition = "opacity 0.8s ease, transform 0.8s ease";
+        });
+
+        window.addEventListener('scroll', fadeInOnScroll);
+        // Initial check in case elements are already in view
+        fadeInOnScroll();
+
+        // Animate stats counter
+        const animateStats = () => {
+            const statNumbers = document.querySelectorAll('.stat-number');
+            statNumbers.forEach(stat => {
+                const target = parseInt(stat.textContent);
+                let current = 0;
+                const increment = target / 50;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        stat.textContent = target + (stat.textContent.includes('+') ? '+' : '');
+                        clearInterval(timer);
+                    } else {
+                        stat.textContent = Math.floor(current) + (stat.textContent.includes('+') ? '+' : '');
+                    }
+                }, 30);
+            });
+        };
+
+        // Trigger stats animation when in view
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateStats();
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        });
+
+        const statsSection = document.querySelector('.overview-stats');
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+    </script>
+</body>
+</html>

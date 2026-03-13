@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bionik Ayiti - Foire Aux Questions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #f59af4;
+            --secondary: #1f0d68;
+            --dark: #03032e;
+            --light: #f8f9fa;
+            --gradient: linear-gradient(135deg, var(--dark), var(--secondary));
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Header */
+        header {
+            background: var(--gradient);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+        }
+        
+        .logo span {
+            color: var(--primary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover, nav a.active {
+            color: var(--primary);
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Page Hero */
+        .page-hero {
+            background: linear-gradient(rgba(3, 3, 46, 0.8), rgba(31, 13, 104, 0.8)), url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .page-hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .page-hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        /* Search Section */
+        .search-section {
+            padding: 3rem 0;
+            background-color: white;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .search-container i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 1.2rem 1rem 1.2rem 3rem;
+            border: 2px solid #eee;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(245, 154, 244, 0.2);
+        }
+        
+        /* Categories */
+        .categories {
+            padding: 3rem 0;
+            background-color: white;
+        }
+        
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+        
+        .category-card {
+            text-align: center;
+            padding: 2rem;
+            background: var(--light);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+        
+        .category-card.active {
+            border-color: var(--primary);
+            background: white;
+        }
+        
+        .category-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .category-card h3 {
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .category-card p {
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            padding: 3rem 0 5rem;
+            background-color: white;
+        }
+        
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+        
+        .faq-item {
+            background: white;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+        }
+        
+        .faq-item:hover {
+            box-shadow: var(--shadow);
+            border-color: var(--primary);
+        }
+        
+        .faq-question {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .faq-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-light, linear-gradient(135deg, rgba(245, 154, 244, 0.1), rgba(31, 13, 104, 0.1)));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            flex-shrink: 0;
+        }
+        
+        .faq-question h3 {
+            color: var(--secondary);
+            font-size: 1.1rem;
+            line-height: 1.4;
+        }
+        
+        .faq-answer {
+            margin-left: 3.5rem;
+            color: #666;
+        }
+        
+        .faq-answer p {
+            margin-bottom: 0.5rem;
+        }
+        
+        .faq-answer ul {
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+        
+        .faq-answer li {
+            margin-bottom: 0.3rem;
+            color: #777;
+        }
+        
+        /* Still Have Questions */
+        .still-questions {
+            padding: 4rem 0;
+            background: var(--gradient);
+            color: white;
+            text-align: center;
+        }
+        
+        .still-questions h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .still-questions p {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+        
+        .contact-options {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .contact-option {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .contact-option:hover {
+            background: var(--primary);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+        
+        .contact-option i {
+            font-size: 1.3rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 4rem 0 1rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-column h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-column p {
+            color: #aaa;
+            line-height: 1.7;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: var(--primary);
+        }
+        
+        .footer-contact li {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: #aaa;
+        }
+        
+        .footer-contact i {
+            color: var(--primary);
+            width: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+        }
+        
+        /* Mobile Navigation */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 300px;
+            height: 100vh;
+            background: var(--gradient);
+            z-index: 1100;
+            transition: right 0.4s ease;
+            padding: 2rem;
+        }
+        
+        .mobile-nav.active {
+            right: 0;
+        }
+        
+        .mobile-nav ul {
+            list-style: none;
+            margin-top: 3rem;
+        }
+        
+        .mobile-nav li {
+            margin-bottom: 1.5rem;
+        }
+        
+        .mobile-nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+        
+        .close-menu {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1099;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s;
+        }
+        
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .categories-grid,
+            .faq-grid,
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .page-hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .categories-grid,
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-options {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .contact-option {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>Bionik <span>Ayiti</span></h1>
+                </div>
+                <nav>
+                    <ul>
+                       <li><a href="index.html">Accueil</a></li>
+                        <li><a href="about.html">À propos</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="faq.html" class="active">FAQ</a></li>
+                    </ul>
+                </nav>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <button class="close-menu" id="closeMenu">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+                        <li><a href="about.html">À propos</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="faq.html" class="active">FAQ</a></li>
+        </ul>
+    </div>
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <h2>Foire Aux Questions</h2>
+            <p>Trouvez rapidement des réponses aux questions les plus fréquentes sur nos prothèses, nos services et notre accompagnement.</p>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="search-section">
+        <div class="container">
+            <div class="search-container">
+                <i class="fas fa-search"></i>
+                <input type="text" class="search-input" id="searchInput" placeholder="Rechercher une question...">
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="categories">
+        <div class="container">
+            <div class="categories-grid" id="categories">
+                <div class="category-card active" data-category="all">
+                    <div class="category-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Toutes</h3>
+                    <p>L'ensemble des questions</p>
+                </div>
+                <div class="category-card" data-category="general">
+                    <div class="category-icon">
+                        <i class="fas fa-info-circle"></i>
+                    </div>
+                    <h3>Générales</h3>
+                    <p>Informations générales</p>
+                </div>
+                <div class="category-card" data-category="prosthetics">
+                    <div class="category-icon">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h3>Prothèses</h3>
+                    <p>Questions techniques</p>
+                </div>
+                <div class="category-card" data-category="process">
+                    <div class="category-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Processus</h3>
+                    <p>Délais et étapes</p>
+                </div>
+                <div class="category-card" data-category="cost">
+                    <div class="category-icon">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <h3>Tarifs</h3>
+                    <p>Coûts et financement</p>
+                </div>
+                <div class="category-card" data-category="support">
+                    <div class="category-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Support</h3>
+                    <p>Maintenance et suivi</p>
+                </div>
+                <div class="category-card" data-category="children">
+                    <div class="category-icon">
+                        <i class="fas fa-child"></i>
+                    </div>
+                    <h3>Enfants</h3>
+                    <p>Solutions pédiatriques</p>
+                </div>
+                <div class="category-card" data-category="technical">
+                    <div class="category-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h3>Technique</h3>
+                    <p>Aspects technologiques</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="faq-grid" id="faqGrid">
+                <!-- Générales -->
+                <div class="faq-item" data-category="general">
+                    <div class="faq-question">
+                        <div class="faq-icon">
+                            <i class="fas fa-question"></i>
+                        </div>
+                        <h3>Qu'est-ce que Bionik Ayiti ?</h3>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Bionik Ayiti est le premier projet technologique haïtien dédié à la conception de solutions bioniques accessibles. Nous créons des prothèses personnalisées pour les enfants et adultes ayant perdu un membre supérieur, en combinant innovation technique et approche humaine.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="general">
+                    <div class="faq-question">
+                        <div class="faq-icon">
+                            <i class="fas fa-question"></i>
+                        </div>
+                        <h3>Où êtes-vous situés ?</h3>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Notre atelier et nos bureaux sont situés à Port-au-Prince, Haïti. Nous pouvons recevoir les patients sur rendez-vous et nous déplaçons également dans certaines régions pour les consultations initiales.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="general">
+                    <div class="faq-question">
+                        <div class="faq-icon">
+                            <i class="fas fa-question"></i>
+                        </div>
+                        <h3>Qui peut bénéficier de vos services ?</h3>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Toute personne ayant subi une amputation du membre supérieur (main, avant-bras, bras) peut bénéficier de nos services. Nous travaillons aussi bien avec les enfants qu'avec les adultes, et nous adaptons chaque solution au cas particulier.</p>
+                    </div>
+                </div>
+
+                <!-- Prothèses -->
+                <div class="faq-item" data-category="prosthetics">
+                    <div class="faq-question">
+                        <div class="faq-icon">
+                            <i class="fas fa-question"></i>
+                        </div>
+                        <h3>Quels types de prothèses proposez-vous ?</h3>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Nous proposons plusieurs types de prothèses :</p>
+                        <ul>
+                            <li>Bras bioniques complets</li>
+                            <li>Mains myoélectriques avec contrôle individuel des doigts</li>
+                            <li>Prothèses pédiatriques évolutives</li>
+                            <li>Solutions personnalisées selon les besoins</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="prosthetics">
+                    <div class="faq-question">
+                        <div class="faq-icon">
+                            <i class="fas fa-question"></i>
+                        </div>
+                        <h3>Comment fonctionne une prothèse myoélectrique ?</h3>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Les prothèses myoélectriques utilisent des capteurs placés sur la peau pour détecter les signaux électriques produits par les muscles du moignon. Ces signaux sont interprétés par un microcontrôleur qui commande les moteurs de la prothèse, permettant des mouvements naturels et intuitifs.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="prosthetics">
+                    <div class="faq-question">
+                        <div class="faq-icon">
+                            <i class="fas fa-question"></i>
+                        </div>
+                        <h3>Les prothèses sont-elles personnalisables ?</h3>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolument ! Chaque prothèse est unique. Vous pouvez choisir les couleurs, les finitions, et même ajouter des motifs personnalisés. Pour les enfants, nous proposons des designs ludiques (super-héros, motifs préférés) pour faciliter l'acceptation et l'adoption de la prothèse.</p>
+                    </div>
+                </div>
+
+                <!-- Processus -->
+                <div class="faq-item" data-category="process">
+                    <div class="faq-question">
+                        <div class="faq-icon">
+                            <i class="fas fa-question"></i>
+                        </div>
+                        <h3>Comment se déroule le processus d'obtention d'une prothèse ?</h3>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Le processus se déroule en plusieurs étapes :</p>
+                        <ul>
+                            <li>Consultation initiale et évaluation des besoins</li>
+                            <li>Prise de mesures et scan 3D du moignon</li>
+                            <li>Conception personnalisée et validation</li>
+                            <li>Fabrication et impression 3D</li>
+                            <li>Tests et ajustements avec le patient</li>
+                            <li>Livraison et formation à l'utilisation</li>
+                            <li>Suivi régulier</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="process">
+                    <div class="faq-question">
+                        <div class="faq-icon">
+                            <i class="fas fa-question"></i>
+                        </div>
+                        <h3>Combien de temps faut-il pour fabriquer une prothèse ?</h3>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Le délai de fabrication varie selon la complexité de la prothèse, mais en général, comptez entre 4 et 8 semaines entre la première consultation et la livraison finale. Les prothèses pédiatriques peuvent être plus rapides car elles sont souvent plus simples.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="process">
+                    <div class="faq-question">
+                        <div class="faq-icon">
+                            <i class="fas fa-question"></i>
+                        </div>
+                        <h3>Proposez-vous des essais avant l'achat ?</h3>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Oui, nous proposons une phase de tests avec une prothèse prototype pour vous permettre de vous familiariser avec l'appareil et de valider le confort et la fonctionnalité avant la fabrication finale.</p>
+                    </div>
+                </div>
+
+                <!-- Tarifs -->
+                <div class="faq-item" data-category="cost">
+                    <div class="faq-question">
+                        <div class="faq-icon">
+                            <i class="fas fa-question"></i>
+                        </div>
+                        <h3>Combien coûte une prothèse bionique ?</h3>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Le coût varie considérablement selon le type de prothèse, sa complexité et le niveau de personnalisation. Nous travaillons à rendre nos solutions accessibles et proposons différents modèles adaptés à tous les budgets. Contactez-nous pour un devis personnalisé.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="cost">
+                    <div class="faq-question">
+                        <div class="faq-icon">
+                            <i class="fas fa-question"></i>
+                        </div>
+                        <h3>Proposez-vous des facilités de paiement ?</h3>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Oui, nous comprenons que l'investissement est important. Nous proposons des plans de paiement échelonnés et travaillons avec des partenaires pour faciliter l'accès au financement. N'hésitez pas à nous parler de votre situation.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="cost">
+                    <div class="faq-question">
+                        <div class="faq-icon">
+                            <i class="fas fa-question"></i>
+                        </div>
+                        <h3>Les prothèses sont-elles prises en charge par l'assurance ?</h3>
+                    </div>
+                    <div class="faq-answer">
+                        <p>En Haïti, la couverture des prothèses par les assurances est encore rare. Nous vous aidons à constituer les dossiers nécessaires et vous accompagnons dans vos démarches auprès des organismes qui pourraient contribuer au financement.</p>
+                    </div>
+                </div>
+
+                <!-- Support -->
+                <div class="faq-item" data-category="support">
+                    <div class="faq-question">
+                        <div class="faq-icon">
+                            <i class="fas fa-question"></i>
+                        </div>
+                        <h3>Proposez-vous un service après-vente ?</h3>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolument ! Nous assurons un suivi régulier de tous nos patients. Nous proposons des contrats de maintenance, des réparations rapides et des ajustements gratuits pendant la première année. Pour les enfants, nous effectuons des suivis trimestriels pour adapter la prothèse à leur croissance.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="support">
+                    <div class="faq-question">
+                        <div class="faq-icon">
+                            <i class="fas fa-question"></i>
+                        </div>
+                        <h3>Que faire en cas de panne ?</h3>
+                    </div>
+                    <div class="faq-answer">
+                        <p>En cas de problème, contactez-nous immédiatement par téléphone ou WhatsApp. Nous avons un service d'urgence pour les pannes critiques. La plupart des réparations sont effectuées sous 48h. Une prothèse de dépannage peut être prêtée si nécessaire.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="support">
+                    <div class="faq-question">
+                        <div class="faq-icon">
+                            <i class="fas fa-question"></i>
+                        </div>
+                        <h3>Comment entretenir ma prothèse au quotidien ?</h3>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Nous fournissons un guide d'entretien détaillé avec chaque prothèse. Les gestes de base incluent : nettoyage quotidien des parties en contact avec la peau, recharge régulière des batteries, et vérification visuelle des câbles et connecteurs. Nous proposons également des sessions de formation pour l'entretien courant.</p>
+                    </div>
+                </div>
+
+                <!-- Enfants -->
+                <div class="faq-item" data-category="children">
+                    <div class="faq-question">
+                        <div class="faq-icon">
+                            <i class="fas fa-question"></i>
+                        </div>
+                        <h3>À partir de quel âge un enfant peut-il porter une prothèse ?</h3>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Nous concevons des prothèses pour enfants à partir de 3 ans. À cet âge, l'enfant commence à avoir une meilleure coordination et peut apprendre à utiliser la prothèse de façon ludique. Pour les plus jeunes, nous proposons des solutions d'éveil et d'adaptation progressive.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="children">
+                    <div class="faq-question">
+                        <div class="faq-icon">
+                            <i class="fas fa-question"></i>
+                        </div>
+                        <h3>Comment gérez-vous la croissance des enfants ?</h3>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Nos prothèses pédiatriques sont conçues pour être évolutives. L'emboîture est modulable pour s'adapter à la croissance, et nous prévoyons des visites de contrôle régulières (tous les 3 à 6 mois) pour effectuer les ajustements nécessaires. Nous proposons également un système d'échange pour les enfants qui changent rapidement de taille.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="children">
+                    <div class="faq-question">
+                        <div class="faq-icon">
+                            <i class="fas fa-question"></i>
+                        </div>
+                        <h3>Les prothèses sont-elles adaptées aux jeux et activités des enfants ?</h3>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Oui, nous concevons nos prothèses pédiatriques pour résister aux activités normales des enfants : jeux, sport, école. Nous proposons même des embouts interchangeables (pour faire du vélo, dessiner, etc.) et des coques de protection pour les activités plus intenses.</p>
+                    </div>
+                </div>
+
+                <!-- Technique -->
+                <div class="faq-item" data-category="technical">
+                    <div class="faq-question">
+                        <div class="faq-icon">
+                            <i class="fas fa-question"></i>
+                        </div>
+                        <h3>Quelle est l'autonomie des prothèses ?</h3>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Nos prothèses sont équipées de batteries haute capacité offrant une autonomie d'une journée complète d'utilisation normale (12-16 heures). La recharge complète prend environ 2-3 heures. Nous fournissons également une batterie de secours pour les longs déplacements.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="technical">
+                    <div class="faq-question">
+                        <div class="faq-icon">
+                            <i class="fas fa-question"></i>
+                        </div>
+                        <h3>Les prothèses sont-elles étanches ?</h3>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Nos prothèses sont résistantes aux éclaboussures et à la transpiration, mais ne sont pas conçues pour être immergées. Nous déconseillons la douche, le bain ou la natation avec la prothèse. Des solutions spécifiques peuvent être étudiées pour certains cas particuliers.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="technical">
+                    <div class="faq-question">
+                        <div class="faq-icon">
+                            <i class="fas fa-question"></i>
+                        </div>
+                        <h3>Quels matériaux utilisez-vous ?</h3>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Nous utilisons principalement des matériaux légers et résistants :</p>
+                        <ul>
+                            <li>PLA et résines pour l'impression 3D</li>
+                            <li>Aluminium et titane pour les parties structurelles</li>
+                            <li>Silicone médical pour les parties en contact avec la peau</li>
+                            <li>Composites carbone pour les modèles haute performance</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Still Have Questions -->
+    <section class="still-questions">
+        <div class="container">
+            <h2>Vous n'avez pas trouvé votre réponse ?</h2>
+            <p>Notre équipe est là pour vous aider. Contactez-nous.</p>
+            <div class="contact-options">
+                
+                <a href="contact.html" class="contact-option">
+                    <i class="fas fa-comment"></i>
+                    <span>Formulaire</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Bionik Ayiti</h3>
+                    <p>Premier projet haïtien de solutions prothétiques bioniques accessibles, né d'une histoire personnelle et d'une mission nationale.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Liens Rapides</h3>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="index.html#mission">Mission</a></li>
+                        <li><a href="index.html#services">Services</a></li>
+                        <li><a href="index.html#prosthetics">Prothèses</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Solutions</h3>
+                    <ul>
+                        <li><a href="#">Bras Bioniques</a></li>
+                        <li><a href="#">Mains Myoélectriques</a></li>
+                        <li><a href="#">Prothèses Pédiatriques</a></li>
+                        <li><a href="#">Solutions Personnalisées</a></li>
+                        <li><a href="#">Maintenance</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul class="footer-contact">
+                        <li><i class="fas fa-map-marker-alt"></i> Port-au-Prince, Haïti</li>
+                        <li><i class="fas fa-phone"></i> +509 1234 5678</li>
+                        <li><i class="fas fa-envelope"></i> info@bionikayiti.com</li>
+                        <li><i class="fas fa-clock"></i> Lun-Ven: 8h-18h</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Bionik Ayiti. Tous droits réservés. | Conçu avec <i class="fas fa-heart" style="color: var(--primary);"></i> en Haïti</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu
+        const mobileMenuBtn = document.querySelector('.mobile-menu');
+        const mobileNav = document.getElementById('mobileNav');
+        const closeMenuBtn = document.getElementById('closeMenu');
+        const overlay = document.getElementById('overlay');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            mobileNav.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        closeMenuBtn.addEventListener('click', closeMenu);
+        overlay.addEventListener('click', closeMenu);
+        
+        function closeMenu() {
+            mobileNav.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        document.querySelectorAll('.mobile-nav a').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+
+        // Header scroll
+        let lastScroll = 0;
+        const header = document.getElementById('header');
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.scrollY;
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                header.style.transform = 'translateY(-100%)';
+            } else {
+                header.style.transform = 'translateY(0)';
+            }
+            lastScroll = currentScroll;
+        });
+
+        // Category filtering
+        const categoryCards = document.querySelectorAll('.category-card');
+        const faqItems = document.querySelectorAll('.faq-item');
+        const searchInput = document.getElementById('searchInput');
+
+        function filterFAQs() {
+            const activeCategory = document.querySelector('.category-card.active')?.dataset.category || 'all';
+            const searchTerm = searchInput?.value.toLowerCase() || '';
+
+            faqItems.forEach(item => {
+                const itemCategory = item.dataset.category;
+                const questionText = item.querySelector('h3').textContent.toLowerCase();
+                const answerText = item.querySelector('.faq-answer').textContent.toLowerCase();
+                
+                const matchesCategory = activeCategory === 'all' || itemCategory === activeCategory;
+                const matchesSearch = searchTerm === '' || questionText.includes(searchTerm) || answerText.includes(searchTerm);
+                
+                if (matchesCategory && matchesSearch) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        categoryCards.forEach(card => {
+            card.addEventListener('click', () => {
+                categoryCards.forEach(c => c.classList.remove('active'));
+                card.classList.add('active');
+                filterFAQs();
+            });
+        });
+
+        if (searchInput) {
+            searchInput.addEventListener('input', filterFAQs);
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

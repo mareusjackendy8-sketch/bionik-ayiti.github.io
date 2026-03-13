@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technologie - Bionik Ayiti</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #f59af4;
+            --secondary: #1f0d68;
+            --dark: #03032e;
+            --light: #f8f9fa;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--dark), var(--secondary));
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-out;
+        }
+        
+        .header-hidden {
+            transform: translateY(-100%);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo i {
+            color: var(--primary);
+            font-size: 2rem;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .logo span {
+            color: var(--primary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        nav a:hover {
+            color: var(--primary);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: white;
+        }
+        
+        /* Hero Section */
+        .tech-hero {
+            background: linear-gradient(rgba(3, 3, 46, 0.85), rgba(31, 13, 104, 0.85)), url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 8rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tech-hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .tech-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease-out 0.5s forwards;
+        }
+        
+        .tech-hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease-out 0.8s forwards;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Neuro Tech Section */
+        .neuro-tech {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .neuro-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .neuro-text h3 {
+            font-size: 1.8rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .neuro-text p {
+            margin-bottom: 1.5rem;
+            color: #666;
+            line-height: 1.8;
+        }
+        
+        .neuro-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .neuro-feature {
+            background: rgba(245, 154, 244, 0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            flex: 1;
+            min-width: 150px;
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .neuro-feature:hover {
+            transform: translateY(-5px);
+            background: rgba(245, 154, 244, 0.2);
+        }
+        
+        .neuro-feature i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .neuro-visual {
+            position: relative;
+            height: 400px;
+            background: linear-gradient(135deg, var(--secondary), var(--dark));
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .brain-animation {
+            width: 200px;
+            height: 200px;
+            position: relative;
+        }
+        
+        .brain-circle {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 3px solid var(--primary);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .brain-pulse {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        .neuron {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 50%;
+            animation: neuronPulse 3s infinite;
+        }
+        
+        .neuron:nth-child(1) { top: 20%; left: 30%; animation-delay: 0s; }
+        .neuron:nth-child(2) { top: 40%; left: 70%; animation-delay: 0.5s; }
+        .neuron:nth-child(3) { top: 70%; left: 20%; animation-delay: 1s; }
+        .neuron:nth-child(4) { top: 60%; left: 60%; animation-delay: 1.5s; }
+        .neuron:nth-child(5) { top: 30%; left: 50%; animation-delay: 2s; }
+        
+        @keyframes pulse {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(3); opacity: 0; }
+        }
+        
+        @keyframes neuronPulse {
+            0%, 100% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.5); opacity: 1; }
+        }
+        
+        /* Tech Features Section */
+        .tech-features {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--dark), var(--secondary));
+            color: white;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 2.5rem;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), transparent);
+            opacity: 0;
+            transition: var(--transition);
+            z-index: -1;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .feature-card:hover::before {
+            opacity: 0.1;
+        }
+        
+        .feature-icon {
+            font-size: 3.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            transition: var(--transition);
+        }
+        
+        .feature-card:hover .feature-icon {
+            transform: scale(1.2) rotate(5deg);
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .feature-card p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        /* Process Section */
+        .process {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .process-step {
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1.5rem;
+            transition: var(--transition);
+        }
+        
+        .process-step:hover .step-number {
+            transform: scale(1.1) rotate(10deg);
+        }
+        
+        .process-step h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+        
+        .process-step p {
+            color: #666;
+        }
+        
+        /* Comparison Section */
+        .comparison {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--dark), var(--secondary));
+            color: white;
+        }
+        
+        .comparison-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .comparison-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+        
+        .comparison-text p {
+            margin-bottom: 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+        }
+        
+        .comparison-table {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+        
+        .table-row {
+            display: flex;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .table-row:last-child {
+            border-bottom: none;
+        }
+        
+        .table-cell {
+            padding: 1.5rem;
+            flex: 1;
+        }
+        
+        .table-header {
+            background: rgba(245, 154, 244, 0.2);
+            font-weight: bold;
+        }
+        
+        .tech-badge {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--dark);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+        
+        /* Innovation Section */
+        .innovation {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        
+        .innovation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .innovation-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .innovation-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .innovation-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .innovation-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(transparent, rgba(31, 13, 104, 0.8));
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem;
+            color: white;
+        }
+        
+        .innovation-info {
+            padding: 1.5rem;
+        }
+        
+        .innovation-info h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+        
+        .innovation-info p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .innovation-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .innovation-feature {
+            background: rgba(245, 154, 244, 0.1);
+            color: var(--secondary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        /* CTA Section */
+        .cta {
+            padding: 5rem 0;
+            background: linear-gradient(rgba(3, 3, 46, 0.9), rgba(31, 13, 104, 0.9)), url('https://images.unsplash.com/photo-1621905252507-b35492cc74b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .cta p {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--dark);
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: var(--primary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Mobile Navigation */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 300px;
+            height: 100vh;
+            background: linear-gradient(135deg, var(--dark), var(--secondary));
+            z-index: 1100;
+            transition: right 0.4s ease;
+            padding: 2rem;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .mobile-nav.active {
+            right: 0;
+        }
+        
+        .mobile-nav ul {
+            list-style: none;
+            margin-top: 3rem;
+        }
+        
+        .mobile-nav li {
+            margin-bottom: 1.5rem;
+        }
+        
+        .mobile-nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            display: block;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .close-menu {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            color: white;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1099;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+        
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .tech-hero h1 {
+                font-size: 3rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .neuro-content,
+            .comparison-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: row;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .tech-hero {
+                padding: 6rem 0;
+            }
+            
+            .tech-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .tech-hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .features-grid,
+            .process-steps,
+            .innovation-grid,
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .feature-card,
+            .process-step,
+            .innovation-card {
+                margin-bottom: 1.5rem;
+            }
+            
+            .cta h2 {
+                font-size: 2rem;
+            }
+            
+            .footer-column {
+                margin-bottom: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                width: 95%;
+            }
+            
+            .logo h1 {
+                font-size: 1.5rem;
+            }
+            
+            .logo i {
+                font-size: 1.5rem;
+            }
+            
+            .tech-hero {
+                padding: 4rem 0;
+            }
+            
+            .tech-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .tech-hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .neuro-tech,
+            .tech-features,
+            .process,
+            .comparison,
+            .innovation,
+            .cta {
+                padding: 3rem 0;
+            }
+            
+            .feature-card,
+            .innovation-card {
+                padding: 1.5rem;
+            }
+            
+            .btn {
+                padding: 0.7rem 1.2rem;
+                font-size: 0.9rem;
+            }
+            
+            footer {
+                padding: 2rem 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-robot"></i>
+                    <h1>Bionik <span>Ayiti</span></h1>
+                </div>
+                <nav>
+                    <ul>
+                       <li><a href="index.html">Accueil</a></li>
+                        <li><a href="about.html">À propos</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="faq.html" class="active">FAQ</a></li>
+                    </ul>
+                </nav>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <button class="close-menu" id="closeMenu">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul>
+                       <li><a href="index.html">Accueil</a></li>
+                        <li><a href="about.html">À propos</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="faq.html" class="active">FAQ</a></li>        </ul>
+    </div>
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Hero Section -->
+    <section class="tech-hero">
+        <div class="container">
+            <div class="tech-hero-content">
+                <h1>Notre Technologie</h1>
+                <p>Découvrez les innovations de pointe qui rendent nos prothèses bioniques uniques et accessibles</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Neuro Tech Section -->
+    <section class="neuro-tech">
+        <div class="container">
+            <div class="section-title">
+                <h2>Interface Neuronale Avancée</h2>
+                <p>Contrôle intuitif par la pensée grâce à nos systèmes EMG de dernière génération</p>
+            </div>
+            <div class="neuro-content">
+                <div class="neuro-text">
+                    <h3>Contrôle Cerveau-Machine</h3>
+                    <p>Nos prothèses utilisent des capteurs EMG (électromyographie) de haute précision qui détectent les signaux électriques générés par les muscles résiduels. Ces signaux sont interprétés par nos algorithmes d'intelligence artificielle pour traduire l'intention de mouvement en actions précises.</p>
+                    <p>Contrairement aux systèmes traditionnels, notre technologie permet un contrôle naturel et intuitif sans nécessiter d'apprentissage complexe de la part de l'utilisateur.</p>
+                    
+                    <div class="neuro-features">
+                        <div class="neuro-feature">
+                            <i class="fas fa-brain"></i>
+                            <p>Détection précise</p>
+                        </div>
+                        <div class="neuro-feature">
+                            <i class="fas fa-bolt"></i>
+                            <p>Temps réel</p>
+                        </div>
+                        <div class="neuro-feature">
+                            <i class="fas fa-microchip"></i>
+                            <p>IA intégrée</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="neuro-visual">
+                    <div class="brain-animation">
+                        <div class="brain-circle">
+                            <div class="brain-pulse"></div>
+                            <div class="neuron"></div>
+                            <div class="neuron"></div>
+                            <div class="neuron"></div>
+                            <div class="neuron"></div>
+                            <div class="neuron"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Features Section -->
+    <section class="tech-features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Caractéristiques Techniques</h2>
+                <p>Les éléments qui font la différence dans nos solutions prothétiques</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-hand-holding-medical"></i>
+                    </div>
+                    <h3>Rétroaction Sensorielle</h3>
+                    <p>Système haptique avancé permettant de ressentir la pression et la texture des objets manipulés.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-fingerprint"></i>
+                    </div>
+                    <h3>Contrôle Individuel des Doigts</h3>
+                    <p>Chaque doigt peut être contrôlé indépendamment pour une précision maximale dans les gestes fins.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-battery-full"></i>
+                    </div>
+                    <h3>Autonomie Étendue</h3>
+                    <p>Batterie lithium-ion permettant une utilisation continue de 12 heures avec recharge rapide.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-weight-hanging"></i>
+                    </div>
+                    <h3>Design Léger</h3>
+                    <p>Matériaux composites et impression 3D pour un poids minimal sans compromis sur la durabilité.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process">
+        <div class="container">
+            <div class="section-title">
+                <h2>Notre Processus de Développement</h2>
+                <p>Comment nous créons des solutions sur mesure pour chaque bénéficiaire</p>
+            </div>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>Évaluation</h3>
+                    <p>Analyse détaillée des besoins spécifiques et des capacités musculaires résiduelles du bénéficiaire.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>Modélisation 3D</h3>
+                    <p>Scan et conception numérique personnalisée pour un ajustement parfait et un confort optimal.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>Fabrication</h3>
+                    <p>Utilisation de l'impression 3D et de matériaux adaptés pour créer des pièces légères et durables.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3>Intégration</h3>
+                    <p>Assemblage des composants électroniques et programmation des algorithmes de contrôle.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">5</div>
+                    <h3>Tests & Adaptation</h3>
+                    <p>Validation en conditions réelles et ajustements finaux pour garantir performance et confort.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section class="comparison">
+        <div class="container">
+            <div class="comparison-content">
+                <div class="comparison-text">
+                    <h2>Innovation Locale, Impact Global</h2>
+                    <p>Nos solutions combinent la meilleure technologie disponible avec une adaptation intelligente aux réalités haïtiennes. Nous avons développé des approches uniques qui rendent la technologie bionique accessible sans compromis sur la qualité.</p>
+                    <p>Contrairement aux systèmes importés souvent inadaptés au climat et aux ressources locales, nos prothèses sont conçues spécifiquement pour résister aux conditions tropicales tout en restant abordables.</p>
+                </div>
+                <div class="comparison-table">
+                    <div class="table-row table-header">
+                        <div class="table-cell">Caractéristique</div>
+                        <div class="table-cell">Solutions Importées</div>
+                        <div class="table-cell">Bionik Ayiti</div>
+                    </div>
+                    <div class="table-row">
+                        <div class="table-cell">Prix</div>
+                        <div class="table-cell">$10,000+</div>
+                        <div class="table-cell">$1,500-3,000 <span class="tech-badge">90% moins cher</span></div>
+                    </div>
+                    <div class="table-row">
+                        <div class="table-cell">Adaptation climatique</div>
+                        <div class="table-cell">Limitée</div>
+                        <div class="table-cell">Optimisée <span class="tech-badge">Conçu pour Haïti</span></div>
+                    </div>
+                    <div class="table-row">
+                        <div class="table-cell">Maintenance</div>
+                        <div class="table-cell">Complexe, pièces rares</div>
+                        <div class="table-cell">Simple, pièces locales <span class="tech-badge">Facile à réparer</span></div>
+                    </div>
+                    <div class="table-row">
+                        <div class="table-cell">Personnalisation</div>
+                        <div class="table-cell">Standardisée</div>
+                        <div class="table-cell">Sur mesure <span class="tech-badge">Adapté à chaque utilisateur</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Innovation Section -->
+    <section class="innovation">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nos Innovations Brevetées</h2>
+                <p>Des solutions uniques développées spécifiquement pour le contexte haïtien</p>
+            </div>
+            <div class="innovation-grid">
+                <div class="innovation-card">
+                    <div class="innovation-image" style="background-image: url('https://images.unsplash.com/photo-1559757175-0eb30cd8c063?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');">
+                        <div class="innovation-overlay">
+                            <h3>Capteur EMG Haïtien</h3>
+                        </div>
+                    </div>
+                    <div class="innovation-info">
+                        <p>Capteur résistant à l'humidité et aux températures élevées, conçu spécifiquement pour le climat tropical.</p>
+                        <div class="innovation-features">
+                            <span class="innovation-feature">Résistant à l'humidité</span>
+                            <span class="innovation-feature">Faible consommation</span>
+                            <span class="innovation-feature">Prix abordable</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="innovation-card">
+                    <div class="innovation-image" style="background-image: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');">
+                        <div class="innovation-overlay">
+                            <h3>Batterie Solaire Intégrée</h3>
+                        </div>
+                    </div>
+                    <div class="innovation-info">
+                        <p>Système de recharge hybride permettant l'utilisation de l'énergie solaire en complément du secteur.</p>
+                        <div class="innovation-features">
+                            <span class="innovation-feature">Recharge solaire</span>
+                            <span class="innovation-feature">Autonomie étendue</span>
+                            <span class="innovation-feature">Écologique</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="innovation-card">
+                    <div class="innovation-image" style="background-image: url('https://images.unsplash.com/photo-1582719471384-894fbb16e074?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');">
+                        <div class="innovation-overlay">
+                            <h3>Interface Adaptative</h3>
+                        </div>
+                    </div>
+                    <div class="innovation-info">
+                        <p>Algorithme d'IA qui apprend des habitudes de l'utilisateur pour améliorer continuellement la précision.</p>
+                        <div class="innovation-features">
+                            <span class="innovation-feature">Auto-apprentissage</span>
+                            <span class="innovation-feature">Adaptation continue</span>
+                            <span class="innovation-feature">Personnalisation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Bionik Ayiti</h3>
+                    <p>Faire progresser les soins de santé grâce à des solutions technologiques prothétiques innovantes en Haïti.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Liens Rapides</h3>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="about.html">À propos</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="technology.html">Technologie</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Solutions Prothétiques</h3>
+                    <ul>
+                        <li><a href="#">Bras Bioniques</a></li>
+                        <li><a href="#">Jambes Intelligentes</a></li>
+                        <li><a href="#">Mains Myoélectriques</a></li>
+                        <li><a href="#">Prothèses Pédiatriques</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contactez-Nous</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Port-au-Prince, Haïti</li>
+                        <li><i class="fas fa-phone"></i> +509 1234 5678</li>
+                        <li><i class="fas fa-envelope"></i> info@bionikayiti.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Bionik Ayiti. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu');
+        const mobileNav = document.getElementById('mobileNav');
+        const closeMenuBtn = document.getElementById('closeMenu');
+        const overlay = document.getElementById('overlay');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            mobileNav.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        closeMenuBtn.addEventListener('click', function() {
+            mobileNav.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        
+        overlay.addEventListener('click', function() {
+            mobileNav.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Close mobile menu when clicking on a link
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mobileNav.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+
+        // Header scroll effect
+        let lastScrollY = window.scrollY;
+        const header = document.getElementById('header');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > lastScrollY && window.scrollY > 100) {
+                header.classList.add('header-hidden');
+            } else {
+                header.classList.remove('header-hidden');
+            }
+            lastScrollY = window.scrollY;
+        });
+
+        // Fade in elements on scroll
+        const fadeElements = document.querySelectorAll('.neuro-content, .feature-card, .process-step, .comparison-content, .innovation-card');
+        
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.style.opacity = "1";
+                    element.style.transform = "translateY(0)";
+                }
+            });
+        };
+
+        // Set initial state for fade elements
+        fadeElements.forEach(element => {
+            element.style.opacity = "0";
+            element.style.transform = "translateY(30px)";
+            element.style.transition = "opacity 0.8s ease, transform 0.8s ease";
+        });
+
+        window.addEventListener('scroll', fadeInOnScroll);
+        // Initial check in case elements are already in view
+        fadeInOnScroll();
+
+        // Add more neurons dynamically
+        const brainCircle = document.querySelector('.brain-circle');
+        for (let i = 0; i < 10; i++) {
+            const neuron = document.createElement('div');
+            neuron.classList.add('neuron');
+            neuron.style.top = `${Math.random() * 100}%`;
+            neuron.style.left = `${Math.random() * 100}%`;
+            neuron.style.animationDelay = `${Math.random() * 3}s`;
+            brainCircle.appendChild(neuron);
+        }
+    </script>
+</body>
+</html>
